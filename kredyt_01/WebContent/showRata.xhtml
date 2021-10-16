@@ -5,22 +5,13 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
-	<title>Kalkulator kredytowy</title>
+	<title>Twoja rata</title>
 </h:head>
 <h:body>
-
-	<h1>Oblicz ratę kredytu</h1>
-
-	<h:form id="bla">
-  		Podaj kwote: <h:inputText value="#{kredytBB.x}" />
-		<br />
-  		Na ile lat: <h:inputText value="#{kredytBB.y}" />
-		<br />
-		<h:messages id="msg" />
-
-		<h:commandButton value="Oblicz rate" action="#{kredytBB.calc()}"/>
-		<br />
+	<h:messages />
+	Twoja rata to: #{kredytBB.result}
+	<h:form>
+		<h:commandButton value="Powrót" action="index" />
 	</h:form>
-
 </h:body>
 </html>
