@@ -3,24 +3,34 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
-<h:head>
-	<title>Kalkulator kredytowy</title>
-</h:head>
-<h:body>
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+<ui:composition template="/templates/page-template.xhtml">
+<ui:define name="pageContent">
 
-	<h1>Oblicz ratę kredytu</h1>
+
+<p:panel header="Oblicz ratę kredytu" style="margin: 1em auto">
 
 	<h:form id="bla">
-  		Podaj kwote: <h:inputText value="#{kredytBB.x}" />
-		<br />
-  		Na ile lat: <h:inputText value="#{kredytBB.y}" />
-		<br />
-		<h:messages id="msg" />
-
-		<h:commandButton value="Oblicz rate" action="#{kredytBB.calc()}"/>
-		<br />
+	
+	        <h:panelGrid id="grid" columns="3" cellpadding="7">
+	        
+	            <p:outputLabel for="x" value="Podaj kwotę: "/>
+	            <p:inputText id="x" required="true" value="#{kredytBB.x}"  requiredMessages="Nie podano kwoty."/>
+	            <p:message for="x"/>
+	            
+	            <p:outputLabel for="y" value="Podaj ile lat: "/>
+	            <p:inputText id="y" required="true" value="#{kredytBB.y}"  requiredMessages="Nie podano lat."/>
+	            <p:message for="y"/>
+	
+	        </h:panelGrid>
+	        
+	        <h:messages id="msg" />
+			<h:commandButton value="Oblicz rate" action="#{kredytBB.calc()}" update="@form"/>
+			
 	</h:form>
-
-</h:body>
+</p:panel>
+</ui:define>
+</ui:composition>
 </html>
